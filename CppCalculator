@@ -1,0 +1,94 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+class UnaryOp
+{
+public:
+    float sine(float x) {
+        return sin(x);
+    }
+    float cosine(float x) {
+        return cos(x);
+    }
+    float tangent(float x) {
+        return tan(x);
+    }
+    float clog(float x) {
+        return log10(x);
+    }
+    float ln(float x) {
+        return log(x);
+    }
+};
+class BinaryOp
+{
+public:
+    float y;
+    float get_num2() {
+        cin >> y;
+        return y;
+    }
+    float add(float x, float y) {
+        return x+y;
+    }
+    float subt(float x, float y) {
+        return x-y;
+    }
+    float mult(float x, float y) {
+        return x*y;
+    }
+    float div(float x, float y) {
+        return x/y;
+    }
+    float exp(float x, float y) {
+        return pow(x,y);
+    }
+};
+int main() {
+    cout << "Only enter floats for numerical input. Type \"esc\" when prompted to give an operation to exit.\n";
+    float n, ans;
+    int cont = 1;
+    string op;
+    while(cont) {
+        cin >> n;
+        cin >> op;
+        if (op == "sin") {
+            UnaryOp expression;
+            ans = expression.sine(n);
+        } else if (op == "cos") {
+            UnaryOp expression;
+            ans = expression.cosine(n);
+        } else if (op == "tan") {
+            UnaryOp expression;
+            ans = expression.tangent(n);
+        } else if (op == "log") {
+            UnaryOp expression;
+            ans = expression.clog(n);
+        } else if (op == "ln") {
+            UnaryOp expression;
+            ans = expression.ln(n);
+        } else if (op == "+") {
+            BinaryOp expression;
+            ans = expression.add(n, expression.get_num2());
+        } else if (op == "-") {
+            BinaryOp expression;
+            ans = expression.subt(n, expression.get_num2());
+        } else if (op == "*") {
+            BinaryOp expression;
+            ans = expression.mult(n, expression.get_num2());
+        } else if (op == "/") {
+            BinaryOp expression;
+            ans = expression.div(n, expression.get_num2());
+        } else if (op == "^") {
+            BinaryOp expression;
+            ans = expression.exp(n, expression.get_num2());
+        } else if (op == "esc") {
+            cont = 0;
+        } else {
+            cout << "Error. Invalid input\n";
+            continue;
+        }
+        cout << ans << endl;
+    }
+    return 0;
+}
